@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context, server } from "../main";
 
 const Header = () => {
   const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
     useContext(Context);
 
+  const navigate = useNavigate();
+
+  
   const logoutHandler = async () => {
     setLoading(true);
     try {
@@ -18,6 +21,9 @@ const Header = () => {
       toast.success("Logged Out Successfully");
       setIsAuthenticated(false);
       setLoading(false);
+
+            navigate("/");
+
     } catch (error) {
       toast.error(error.response.data.message);
       setIsAuthenticated(true);
