@@ -9,10 +9,10 @@ const Profile = () => {
     return <div>No user data available.</div>; // Handle case where user data is empty
   }
 
-
-  return loading ? (
+/*loading ? (
     <Loader />
-  ) : (
+  ) : */
+  return (
     <div>
       <h1>{user?.name}</h1>
       <p>{user?.email}</p>
